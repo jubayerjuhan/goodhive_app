@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { Post } from "../page";
 import { getPostBySlug } from "@/lib/blog";
 import moment from "moment";
@@ -10,7 +10,7 @@ type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const post: Post = await getPostBySlug(params.slug);
 
   return {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogDetailPage({ params }: Props) {
+export default async function BlogDetailPage({ params }: any) {
   const post: Post = await getPostBySlug(params.slug);
 
   console.log(post, "post");
