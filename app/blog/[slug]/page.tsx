@@ -7,7 +7,7 @@ import moment from "moment";
 import { CustomPortableTextComponents } from "@/app/components/CustomPortableText/CustomPortableText";
 
 type Props = {
-  params: { slug: string };
+  params: any;
 };
 
 export async function generateMetadata({ params }: Props) {
