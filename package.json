@@ -45,7 +45,7 @@
     "lucide-react": "^0.446.0",
     "mantine-react-table": "^1.3.4",
     "moment": "^2.30.1",
-    "next": "15.0.0",
+    "next": "latest",
     "pino-pretty": "^11.2.2",
     "postcss": "8.4.21",
     "postgres": "^3.3.4",

@@ -1,7 +1,16 @@
 import { cookies } from "next/headers";
 
+export async function AdminPanel() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
+
+  // ...
+}
 export async function GET(request: Request) {
-  if (cookies().get("address")?.value) {
+  const cookieStore = await cookies();
+  const address = cookieStore.get("token");
+
+  if (address.value) {
     cookies().set("address", "", {
       path: "/",
     });
