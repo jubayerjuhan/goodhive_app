@@ -9,14 +9,15 @@ export const revalidate = 0;
 export default async function JobSearchPage({
   searchParams,
 }: {
-  searchParams: {
-    search?: string;
-    location?: string;
-    name?: string;
-    page: number;
-    recruiter?: string;
-    mentor?: string;
-  };
+  searchParams: any;
+  // searchParams: {
+  //   search?: string;
+  //   location?: string;
+  //   name?: string;
+  //   page: number;
+  //   recruiter?: string;
+  //   mentor?: string;
+  // };
 }) {
   const query = { items: itemsPerPage, ...searchParams };
   console.log("search params job search >>>", query);
