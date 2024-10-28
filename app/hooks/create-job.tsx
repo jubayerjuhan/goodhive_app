@@ -71,11 +71,11 @@ export const useCreateJob = (props: Props) => {
         to: token,
         data: tx,
       };
-      const txHash = await window.ethereum.request({
+      const txHash = (await window.ethereum.request({
         method: "eth_sendTransaction",
         params: [receipt as any],
-      });
-      await waitForTransactionReceipt(txHash);
+      })) as `0x${string}`;
+      await waitForTransactionReceipt(txHash as `0x${string}`);
     } catch (error) {
       console.error("Error approving token transfer:", error);
       throw error;
@@ -97,8 +97,9 @@ export const useCreateJob = (props: Props) => {
       const web3 = new Web3(process.env.NEXT_PUBLIC_GOODHIVE_INFURA_API);
       const balance = await checkBalanceTx(jobId);
       if (!window.ethereum) return "";
-      const accounts = await window.ethereum.request({
+      const accounts: string[] = await window.ethereum.request({
         method: "eth_accounts",
+        params: [],
       });
       const EndingBalance = Number(balance) + Number(amount);
       await requestApproval(amount);
@@ -135,7 +136,7 @@ export const useCreateJob = (props: Props) => {
           method: "eth_sendTransaction",
           params: [receipt as any],
         });
-        await waitForTransactionReceipt(txHash);
+        await waitForTransactionReceipt(txHash as `0x${string}`);
       } catch (error) {
         throw error;
       }
@@ -165,7 +166,10 @@ export const useCreateJob = (props: Props) => {
   const withdrawFundsTx = async (jobId: number, amount: number) => {
     if (!window.ethereum) return "";
     const web3 = new Web3(process.env.NEXT_PUBLIC_GOODHIVE_INFURA_API);
-    const accounts = await window.ethereum.request({ method: "eth_accounts" });
+    const accounts: string[] = await window.ethereum.request({
+      method: "eth_accounts",
+      params: [],
+    });
     if (accounts.length === 0) {
       return console.log("no accout found");
     }
@@ -198,7 +202,7 @@ export const useCreateJob = (props: Props) => {
         method: "eth_sendTransaction",
         params: [receipt as any],
       });
-      await waitForTransactionReceipt(txHash);
+      await waitForTransactionReceipt(txHash as `0x${string}`);
       handleUpdateEscrowAmount(jobId, EndingBalance);
     } catch (error) {
       console.error("Error approving token transfer:", error);
@@ -209,7 +213,10 @@ export const useCreateJob = (props: Props) => {
   const transferFundsTx = async (jobId: number, amount: number) => {
     if (!window.ethereum) return "";
     const web3 = new Web3(process.env.NEXT_PUBLIC_GOODHIVE_INFURA_API);
-    const accounts = await window.ethereum.request({ method: "eth_accounts" });
+    const accounts: string[] = await window.ethereum.request({
+      method: "eth_accounts",
+      params: [],
+    });
     if (accounts.length === 0) {
       return console.log("no accout found");
     }
@@ -234,7 +241,7 @@ export const useCreateJob = (props: Props) => {
         method: "eth_sendTransaction",
         params: [receipt as any],
       });
-      await waitForTransactionReceipt(txHash);
+      await waitForTransactionReceipt(txHash as `0x${string}`);
       handleUpdateEscrowAmount(jobId, EndingBalance);
     } catch (error) {
       console.error("Error approving token transfer:", error);
