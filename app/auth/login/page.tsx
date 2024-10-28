@@ -2,12 +2,12 @@
 
 import React from "react";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
 const Login = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
