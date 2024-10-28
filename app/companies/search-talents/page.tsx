@@ -6,17 +6,19 @@ const itemsPerPage = 9;
 
 export const revalidate = 0;
 
+type SearchParams = {
+  items?: number;
+  page: number;
+  search?: string;
+  location?: string;
+};
+
 export default async function SearchTalentsPage({
   searchParams,
 }: {
-  searchParams: {
-    items?: number;
-    page: number;
-    search?: string;
-    location?: string;
-  };
+  searchParams: SearchParams;
 }) {
-  const query = { items: itemsPerPage, ...searchParams };
+  const query = { items: itemsPerPage, page: 1, ...searchParams };
   const { talents, count } = (await fetchTalents(query)) || {
     talents: [],
     count: 0,
