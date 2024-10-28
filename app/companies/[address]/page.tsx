@@ -10,12 +10,8 @@ import { CompanySocialMediaAndContact } from "@/app/components/companies/profile
 export const revalidate = 0;
 
 type CompanyProfilePageProps = {
-  params: {
-    address: string;
-  };
-  searchParams: {
-    id?: number;
-  };
+  params: any;
+  searchParams: any;
 };
 
 export default async function CompanyProfilePage(
