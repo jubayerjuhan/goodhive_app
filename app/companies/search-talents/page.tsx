@@ -6,12 +6,12 @@ const itemsPerPage = 9;
 
 export const revalidate = 0;
 
-type SearchParams = {
+type SearchParams = Promise<{
   items?: number;
   page: number;
   search?: string;
   location?: string;
-};
+}>;
 
 export default async function SearchTalentsPage({
   searchParams,
