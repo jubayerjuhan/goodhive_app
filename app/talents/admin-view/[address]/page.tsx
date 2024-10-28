@@ -19,9 +19,7 @@ import Image from "next/image";
 import { getProfileData } from "@/lib/fetch-profile-data";
 
 type MyProfilePageProps = {
-  params: {
-    address: string;
-  };
+  params: any;
 };
 
 export const revalidate = 0;
