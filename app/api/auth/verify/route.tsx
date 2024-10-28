@@ -4,6 +4,7 @@ import { SiweMessage } from "siwe";
 const ALLOWED_METHODS = ["POST"];
 
 export async function POST(request: Request) {
+  const cookieStore = await cookies();
   const { method } = request;
 
   if (!ALLOWED_METHODS.includes(method)) {
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
     // Disable the linting rule for the following line
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const { value: cookieNonceValue } = cookies().get("nonce");
+    const { value: cookieNonceValue } = cookieStore.get("nonce");
 
     if (data.nonce !== cookieNonceValue)
       return new Response(JSON.stringify({ message: "Invalid nonce." }), {
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
         status: 422,
       });
 
-    cookies().set("address", data.address, {
+    cookieStore.set("address", data.address, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30), // 1 month
       path: "/",
     });

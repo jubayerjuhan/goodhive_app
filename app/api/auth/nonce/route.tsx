@@ -8,6 +8,7 @@ const ALLOWED_METHODS = ["GET"];
 
 export async function GET(request: Request) {
   const { method } = request;
+  const cookieStore = await cookies();
 
   if (!ALLOWED_METHODS.includes(method)) {
     return new Response(null, {
@@ -22,14 +23,14 @@ export async function GET(request: Request) {
   // Disable the linting rule for the following line
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  cookies().set("address", "", {
+  cookieStore.set("address", "", {
     path: "/",
   });
 
   // Disable the linting rule for the following line
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  cookies().set("nonce", nonce, {
+  cookieStore.set("nonce", nonce, {
     httpOnly: true,
     secure: true,
     sameSite: "strict",

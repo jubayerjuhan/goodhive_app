@@ -2,10 +2,10 @@ import { cookies } from "next/headers";
 
 export async function GET(request: Request) {
   const cookieStore = await cookies();
-  const address = cookieStore.get("token");
+  const address = cookieStore.get("address");
 
   if (address.value) {
-    cookies().set("address", "", {
+    cookieStore.set("address", "", {
       path: "/",
     });
 
