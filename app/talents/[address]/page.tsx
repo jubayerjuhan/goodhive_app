@@ -13,13 +13,8 @@ import TalentsCVSection from "@/app/components/talents/TalentsCVSection";
 export const revalidate = 0;
 
 type MyProfilePageProps = {
-  params: {
-    address: string;
-  };
-  searchParams: {
-    vkey: string;
-    ref: string;
-  };
+  params: any;
+  searchParams: any;
 };
 
 export default async function MyProfilePage(context: MyProfilePageProps) {
@@ -62,7 +57,7 @@ export default async function MyProfilePage(context: MyProfilePageProps) {
 
   const availabilityStatus = generateAvailabilityStatus(
     freelance_only,
-    remote_only
+    remote_only,
   );
 
   if (ref === "admin" && isValidVkey === false) return;
