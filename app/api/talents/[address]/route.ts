@@ -1,10 +1,8 @@
 import { NextRequest } from "next/server";
 import postgres from "postgres";
 
-export async function GET(
-  request: NextRequest,
-  context: { params: { address: string } }
-) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(request: NextRequest, context: any) {
   const { address: walletAddress } = context.params;
 
   const sql = postgres(process.env.DATABASE_URL || "", {
@@ -18,7 +16,7 @@ export async function GET(
       JSON.stringify({ message: "Missing address parameter" }),
       {
         status: 404,
-      }
+      },
     );
   }
 
