@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-export const nextConfig = {
+const nextConfig = {
   experimental: {
     appDir: true,
     typedRoutes: true,
@@ -14,4 +14,6 @@ export const nextConfig = {
     ],
   },
 };
+
+export default nextConfig
 
